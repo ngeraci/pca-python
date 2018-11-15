@@ -21,7 +21,7 @@ training: do-we-have-a-repo-of-python-training-resources ?
 
 Python is considered a general-purpose programming language. People use it for lots of different things: there are specialized libraries for image processing, for analyzing scientific data, for web development, and pretty much anything you can think of. But one way it can be especially useful in archives and digital library work is for tidying and transforming metadata or other data that's stored in tabular (spreadsheet-style) formats.
 
-Today we'll be working through an example with metadata from the [Jay Kay Klein collection](https://calisphere.org/collections/26943/) of science fiction convention photographs. We'll use the [pandas](http://pandas.pydata.org/) data analysis library in Python to rename, reorder, add, edit, and delete columns.
+Today we'll be working through an example with metadata from the [Jay Kay Klein collection](https://calisphere.org/collections/26943/) of science fiction convention photographs. We'll use the [pandas](http://pandas.pydata.org/) data analysis library in Python to rename, reorder, add, split, edit, and delete columns.
 
 
 ## About (software) libraries
@@ -55,38 +55,53 @@ pd.read_csv("ms381.csv")
 The above command gives us the output below:
 
 ~~~
-	 URL        											...			Place
-0    https://calisphere.org/item/ark:/86086/n2gx48qv        ...         Pittsburgh (Pa.)
-1    https://calisphere.org/item/ark:/86086/n2c53j0v        ...         Pittsburgh (Pa.)
-2    https://calisphere.org/item/ark:/86086/n27d2s84        ...         Pittsburgh (Pa.)
-3    https://calisphere.org/item/ark:/86086/n23n21js        ...         Pittsburgh (Pa.)
-4    https://calisphere.org/item/ark:/86086/n2000073        ...         Pittsburgh (Pa.)
-5    https://calisphere.org/item/ark:/86086/n2v69grv        ...         Pittsburgh (Pa.)
-6    https://calisphere.org/item/ark:/86086/n2qf8r1j        ...         Pittsburgh (Pa.)
-7    https://calisphere.org/item/ark:/86086/n2fx77kg        ...         Pittsburgh (Pa.)
-8    https://calisphere.org/item/ark:/86086/n2b56gv2        ...         Pittsburgh (Pa.)
-9    https://calisphere.org/item/ark:/86086/n26d5r4r        ...         Pittsburgh (Pa.)
-10   https://calisphere.org/item/ark:/86086/n2kp8096        ...         Pittsburgh (Pa.)
+                                                 Title                        .
+..                                                                     People
+0          Richard Lupoff, Argosy distribution, Pittcon                        .
+..                                                  Lupoff, Richard A., 1935-
+1          Richard Lupoff, Argosy distribution, Pittcon                        .
+..                                                  Lupoff, Richard A., 1935-
+2                                  Party scene, Pittcon                        .
+..                              De Camp, L. Sprague (Lyon Sprague), 1907-2000
+3                        Cutting into the cake, Pittcon                        .
+..                                                             Dinkleman, Ann
+4                                  Party scene, Pittcon                        .
+..                                                             Dinkleman, Ann
+5                                  Party scene, Pittcon                        .
+..                                                             Dinkleman, Ann
+6             Isaac Asimov and fans conversing, Pittcon                        .
+..                                                   Asimov, Isaac, 1920-1992
+7           Forrest J Ackerman in conversation, Pittcon                        .
+..                                                       Ackerman, Forrest J.
+8                  Bjo Trimble at dealers room, Pittcon                        .
+..                                                               Trimble, Bjo
+9                        Avram Davidson at bar, Pittcon                        .
+..                                                            Davidson, Avram
+10                Ed Emshwiller, prominent fan, Pittcon                        .
+..                                                             Emshwiller, Ed
+...                                                 ...                        .
+..                                                                        ...
 
-..   ...        											...			...
+1636  John Schoenherr, "The Role of the Artist in Sc...                        .
+..                                                           Schoenherr, John
+1637  Jack Gaughan, "The Role of the Artist in Scien...                        .
+..                                                              Gaughan, Jack
+1638                         Families in bar, Noreascon                        .
+..                                                           Bova, Ben, 1932-
+1639         Larry Niven speaking at closing, Noreascon                        .
+..                                                               Niven, Larry
+1640         Larry Niven speaking at closing, Noreascon                        .
+..                                                               Niven, Larry
+1641  Tony Lewis and Charlie Brown long shot of clos...                        .
+..                          Lewis, Tony;Brown, Charles N. (Charles Nikki),...
+1642  Jack Chalker and Joe Mayhew speaking at art au...                        .
+..                                    Chalker, Jack L.;Mayhew, Joe, 1942-2000
 
-189  https://calisphere.org/item/ark:/86086/n2tb153n        ...         Pittsburgh (Pa.)
-190  https://calisphere.org/item/ark:/86086/n2pk0dbg        ...         Pittsburgh (Pa.)
-191  https://calisphere.org/item/ark:/86086/n2js9nm6        ...         Pittsburgh (Pa.)
-192  https://calisphere.org/item/ark:/86086/n2f18wws        ...         Pittsburgh (Pa.)
-193  https://calisphere.org/item/ark:/86086/n298855v        ...         Pittsburgh (Pa.)
-194  https://calisphere.org/item/ark:/86086/n25h7df4        ...         Pittsburgh (Pa.)
-195  https://calisphere.org/item/ark:/86086/n21v5c44        ...         Pittsburgh (Pa.)
-196  https://calisphere.org/item/ark:/86086/n2x34vnr        ...         Pittsburgh (Pa.)
-197  https://calisphere.org/item/ark:/86086/n2sb43xd        ...         Pittsburgh (Pa.)
-198  https://calisphere.org/item/ark:/86086/n2nk3c63        ...         Pittsburgh (Pa.)
-
-[199 rows x 10 columns]
-
+[1643 rows x 5 columns]
 ~~~
 {: .output}
 
-We can see that there were 199 rows parsed. Each row has 10
+We can see that there were 1643 rows parsed. Each row has 5
 columns. It looks like  the `read_csv` function in pandas read our file properly. However,
 we haven't saved any data to memory so we can work with it. We need to assign the
 data frame to a variable. We can create a new  object with a variable name by assigning a value to it using `=`.
@@ -114,7 +129,8 @@ which prints contents like above.
 There are multiple methods that can be used to summarize and access the data
 stored in data frames. Let's try out a few. Note that we call the method by using
 the object name *klein_df.method*. So `klein_df.columns` provides an index
-of all of the column names in our data frame.
+of all of the column names in our data frame. We can also view specific columns by selecting them like this:
+`klein_df["Title"]`.
 
 > ## Try out the methods below to see what they return.
 >
