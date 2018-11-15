@@ -3,7 +3,7 @@ title: "Scripts"
 teaching: ??
 exercises: ??
 questions:
-- "How do you save Python code in a file and run it from the shell?""
+- "How do you save Python code in a file and run it from the shell?"
 ---
 
 # Scripts
