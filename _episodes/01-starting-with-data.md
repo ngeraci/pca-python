@@ -1,5 +1,5 @@
 ---
-title: "Starting With Data"
+title: "Starting with data"
 teaching: ??
 exercises: ??
 questions:
@@ -132,7 +132,7 @@ the object name *klein_df.method*. So `klein_df.columns` provides an index
 of all of the column names in our data frame. We can also view specific columns by selecting them like this:
 `klein_df["Title"]`.
 
-> ## Try out the methods below to see what they return.
+> ## Try the methods below to see what they return
 >
 > 1. `klein_df.columns`
 > 2. `klein_df.head()` - Also, what does `klein_df.head(15)` do?
