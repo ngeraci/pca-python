@@ -78,10 +78,10 @@ Index(['Title', 'Identifier', 'Local Identifier 1', 'Date 1', 'People',
 This looks pretty good, but in our new system, we need to have the Identifier field in the first column for the metadata to ingest properly. And oops, we still have our old, combined 'People' field, which we don't want. Here's what we'll do:
 
 ~~~
-klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1',
-                     'Creator', 'Type', 'Form/Genre 1', 'Subject (Name) 1',
-                     'Subject (Name) 2', 'Subject (Name) 3',
-       				 'Subject (Name) 4', 'Subject (Name) 5']]
+klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1', 
+					 'Creator', 'Type', 'Form/Genre 1', 'Subject (Name) 1',
+					 'Subject (Name) 2', 'Subject (Name) 3',
+					 'Subject (Name) 4', 'Subject (Name) 5']]
 ~~~
 {: .source}
 
