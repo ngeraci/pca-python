@@ -38,10 +38,10 @@ people.columns = ['Subject (Name) ' + str(col + 1) for col in people.columns]
 klein_df = klein_df.join(people)
 
 # set column order
-klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1',
-                     'Creator', 'Type', 'Form/Genre 1',
-       				 'Subject (Name) 1', 'Subject (Name) 2', 'Subject (Name) 3',
-       				 'Subject (Name) 4', 'Subject (Name) 5']]
+klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1', 
+					 'Creator', 'Type', 'Form/Genre 1', 'Subject (Name) 1',
+					 'Subject (Name) 2', 'Subject (Name) 3',
+					 'Subject (Name) 4', 'Subject (Name) 5']]
 
 # write new csv file called 'pandas_test_export.csv'
 klein_df.to_csv('pandas_test_export.csv', index=False)
@@ -86,10 +86,10 @@ people.columns = ['Subject (Name) ' + str(col + 1) for col in people.columns]
 klein_df = klein_df.join(people)
 
 # set column order
-klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1',
-                     'Creator', 'Type', 'Form/Genre 1',
-       				 'Subject (Name) 1', 'Subject (Name) 2', 'Subject (Name) 3',
-       				 'Subject (Name) 4', 'Subject (Name) 5']]
+klein_df = klein_df[['Identifier', 'Title', 'Local Identifier 1', 'Date 1', 
+					 'Creator', 'Type', 'Form/Genre 1', 'Subject (Name) 1',
+					 'Subject (Name) 2', 'Subject (Name) 3',
+					 'Subject (Name) 4', 'Subject (Name) 5']]
 
 # write new csv file called 'pandas_script_test_export.csv'
 klein_df.to_csv('pandas_script_test_export.csv', index=False)
